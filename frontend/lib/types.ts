@@ -47,6 +47,8 @@ export interface TeamStats {
   total_engineers: number;
   avg_impact_score: number;
   period_days: number;
+  avg_time_to_first_review_hours?: number;
+  first_pass_approval_rate?: number;
 }
 
 export interface DashboardMeta {
