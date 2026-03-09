@@ -70,9 +70,9 @@ export function TopReviewersChart({ engineers, topN = 10 }: TopReviewersChartPro
                 borderRadius: 8,
                 fontSize: 12,
               }}
-              formatter={(value: number, _name: string, props: { payload: { login: string; prs: number } }) => [
-                `${value} reviews (${props.payload.prs} PRs merged)`,
-                props.payload.login,
+              formatter={(value: number, _name: string, props: { payload?: { login: string; prs: number } }) => [
+                `${value} reviews (${props.payload?.prs ?? 0} PRs merged)`,
+                props.payload?.login ?? "",
               ]}
             />
           </BarChart>

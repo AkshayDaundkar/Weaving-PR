@@ -62,11 +62,10 @@ export function OutputOverTimeChart({ engineers }: OutputOverTimeChartProps) {
                 borderRadius: 8,
                 fontSize: 12,
               }}
-              formatter={(value: number, _name: string, props: { payload: { fullLabel: string } }) => [
+              formatter={(value: number, _name: string, props: { payload?: { fullLabel: string } }) => [
                 value,
-                props.payload.fullLabel,
+                props.payload?.fullLabel ?? "",
               ]}
-              labelFormatter={(_, payload) => payload?.[0]?.payload?.fullLabel}
             />
             <Bar dataKey="value" name="Impact" fill="var(--chart-primary)" radius={[4, 4, 0, 0]} />
           </BarChart>

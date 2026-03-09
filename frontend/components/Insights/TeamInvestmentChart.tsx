@@ -77,9 +77,9 @@ export function TeamInvestmentChart({ teamStats, engineers = [] }: TeamInvestmen
                 borderRadius: 8,
                 fontSize: 12,
               }}
-              formatter={(value: number, _name: string, props: { payload: { pct: number; type: string } }) => [
-                `${value} PRs (${props.payload.pct}%)`,
-                props.payload.type,
+              formatter={(value: number, _name: string, props: { payload?: { pct: number; type: string } }) => [
+                `${value} PRs (${props.payload?.pct ?? 0}%)`,
+                props.payload?.type ?? "",
               ]}
             />
           </BarChart>

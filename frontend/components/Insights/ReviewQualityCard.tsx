@@ -65,8 +65,8 @@ export function ReviewQualityCard({ engineers, topN = 8 }: ReviewQualityCardProp
                 borderRadius: 8,
                 fontSize: 12,
               }}
-              formatter={(value: number, _name: string, props: { payload: { reviews: number } }) => [
-                `${value} (${props.payload.reviews} reviews)`,
+              formatter={(value: number, _name: string, props: { payload?: { reviews: number } }) => [
+                `${value} (${props.payload?.reviews ?? 0} reviews)`,
                 "Quality",
               ]}
             />

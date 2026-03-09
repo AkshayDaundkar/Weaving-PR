@@ -1,11 +1,19 @@
 "use client";
 
-const ROWS = [
+interface MetricRow {
+  metric: string;
+  understandsCode: boolean;
+  measuresProductivity: boolean;
+  correlation: string;
+  highlight?: boolean;
+}
+
+const ROWS: MetricRow[] = [
   { metric: "# of PRs", understandsCode: false, measuresProductivity: false, correlation: "—" },
   { metric: "DORA", understandsCode: false, measuresProductivity: false, correlation: "—" },
   { metric: "Lines of code", understandsCode: false, measuresProductivity: false, correlation: "0.34" },
   { metric: "Impact score", understandsCode: true, measuresProductivity: true, correlation: "0.94", highlight: true },
-] as const;
+];
 
 function CheckIcon() {
   return (
