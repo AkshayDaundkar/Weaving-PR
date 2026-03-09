@@ -10,7 +10,7 @@ export default async function DashboardPage() {
     data = await getDashboard();
   } catch {
     return (
-      <main className="min-h-screen bg-primary flex items-center justify-center p-6">
+      <main className="min-h-screen bg-bg-primary flex items-center justify-center p-6">
         <div className="max-w-md text-center space-y-4">
           <h1 className="text-xl font-bold text-primary">No dashboard data yet</h1>
           <p className="text-muted">

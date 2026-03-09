@@ -34,7 +34,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased min-h-screen bg-primary text-primary`}
+        className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased min-h-screen bg-bg-primary text-primary`}
       >
         {children}
       </body>

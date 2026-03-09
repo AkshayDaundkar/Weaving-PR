@@ -11,20 +11,37 @@ const config: Config = {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
         mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
-      backgroundColor: {
-        primary: "var(--bg-primary)",
-        card: "var(--bg-card)",
+      colors: {
+        bg: {
+          primary: "var(--bg-primary)",
+          secondary: "var(--bg-secondary)",
+          tertiary: "var(--bg-tertiary)",
+          border: "var(--bg-border)",
+        },
+        accent: {
+          DEFAULT: "var(--accent)",
+          hover: "var(--accent-hover)",
+        },
+        "chart-primary": "var(--chart-primary)",
+        posthog: {
+          orange: "var(--posthog-orange)",
+          amber: "var(--posthog-amber)",
+        },
+        score: {
+          high: "var(--score-high)",
+          mid: "var(--score-mid)",
+          low: "var(--score-low)",
+        },
+        momentum: {
+          up: "var(--momentum-up)",
+          flat: "var(--momentum-flat)",
+          down: "var(--momentum-down)",
+        },
       },
       textColor: {
         primary: "var(--text-primary)",
+        secondary: "var(--text-secondary)",
         muted: "var(--text-muted)",
-      },
-      borderColor: {
-        DEFAULT: "var(--border-default)",
-      },
-      colors: {
-        accent: "var(--accent)",
-        "posthog-orange": "var(--posthog-orange)",
       },
     },
   },

@@ -61,14 +61,14 @@ export function Chatbot({ selectedEngineer }: ChatbotProps) {
       {open && (
         <div
           ref={panelRef}
-          className="fixed bottom-24 right-6 z-50 w-full max-w-md rounded-xl border border-[var(--border-default)] bg-card shadow-xl overflow-hidden"
+          className="fixed bottom-24 right-6 z-50 w-full max-w-md rounded-xl border border-bg-border bg-bg-primary shadow-xl overflow-hidden"
         >
-          <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border-default)] bg-primary">
-            <h3 className="font-semibold text-primary">Ask about impact</h3>
+          <div className="flex items-center justify-between px-4 py-3 border-b border-bg-border bg-bg-secondary">
+            <h3 className="font-semibold text-[var(--text-primary)]">Ask about impact</h3>
             <button
               type="button"
               onClick={() => setOpen(false)}
-              className="p-1 rounded text-muted hover:text-primary"
+              className="p-1 rounded text-[var(--text-muted)] hover:text-[var(--text-primary)]"
               aria-label="Close"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -77,8 +77,8 @@ export function Chatbot({ selectedEngineer }: ChatbotProps) {
             </button>
           </div>
           {selectedEngineer && (
-            <p className="px-4 py-1.5 text-sm text-muted border-b border-[var(--border-default)]">
-              Context: <span className="font-mono font-medium text-primary">{selectedEngineer}</span>
+            <p className="px-4 py-1.5 text-sm text-[var(--text-muted)] border-b border-bg-border">
+              Context: <span className="font-mono font-medium text-[var(--text-primary)]">{selectedEngineer}</span>
             </p>
           )}
           <div className="p-4 max-h-60 overflow-y-auto">
@@ -86,7 +86,7 @@ export function Chatbot({ selectedEngineer }: ChatbotProps) {
               <p className="text-sm text-red-500 mb-2">{error}</p>
             )}
             {answer !== null && (
-              <div className="text-sm text-primary whitespace-pre-wrap mb-4">{answer}</div>
+              <div className="text-sm text-[var(--text-primary)] whitespace-pre-wrap mb-4">{answer}</div>
             )}
             <form onSubmit={handleSubmit}>
               <textarea
@@ -94,7 +94,7 @@ export function Chatbot({ selectedEngineer }: ChatbotProps) {
                 onChange={(e) => setQuestion(e.target.value)}
                 placeholder="e.g. How is impact calculated?"
                 rows={2}
-                className="w-full rounded-lg border border-[var(--border-default)] bg-primary text-primary placeholder:text-muted p-3 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-accent"
+                className="w-full rounded-lg border border-bg-border bg-bg-primary text-[var(--text-primary)] placeholder:text-[var(--text-muted)] p-3 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-accent"
                 disabled={loading}
               />
               <button

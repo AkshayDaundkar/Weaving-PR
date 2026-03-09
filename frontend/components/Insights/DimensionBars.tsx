@@ -22,21 +22,21 @@ const DIM_LABELS: { key: keyof EngineerDimensions; label: string }[] = [
 
 export function DimensionBars({ dimensions, title = "Dimensions" }: DimensionBarsProps) {
   return (
-    <div className="rounded-xl bg-white border border-slate-200 p-4 shadow-sm">
-      <h3 className="text-sm font-semibold text-slate-800 mb-3">{title}</h3>
+    <div className="card-weave p-4">
+      <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-3">{title}</h3>
       <div className="space-y-2">
         {DIM_LABELS.map(({ key, label }) => {
           const value = dimensions[key];
           return (
             <div key={key} className="flex items-center gap-3">
-              <span className="text-slate-600 text-sm w-28 shrink-0">{label}</span>
-              <div className="flex-1 h-3 rounded-full bg-slate-200 overflow-hidden max-w-xs">
+              <span className="text-[var(--text-secondary)] text-sm w-28 shrink-0">{label}</span>
+              <div className="flex-1 h-3 rounded-full bg-bg-tertiary overflow-hidden max-w-xs">
                 <div
                   className={`h-full rounded-full ${dimBarColor(value)}`}
                   style={{ width: `${Math.min(100, Math.max(0, value))}%` }}
                 />
               </div>
-              <span className="text-slate-700 text-sm w-8 text-right font-medium">
+              <span className="text-[var(--text-primary)] text-sm w-8 text-right font-medium">
                 {value.toFixed(0)}
               </span>
             </div>

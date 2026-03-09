@@ -4,3 +4,7 @@ export { OutputOverTimeChart } from "./OutputOverTimeChart";
 export { DimensionBars } from "./DimensionBars";
 export { InsightsRow } from "./InsightsRow";
 export { TopReviewersCard } from "./TopReviewersCard";
+export { ReviewQualityCard } from "./ReviewQualityCard";
+export { TeamInvestmentChart } from "./TeamInvestmentChart";
+export { TopReviewersChart } from "./TopReviewersChart";
+export { MetricComparisonTable } from "./MetricComparisonTable";

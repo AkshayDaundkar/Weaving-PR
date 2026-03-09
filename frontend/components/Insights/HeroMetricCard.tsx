@@ -1,40 +1,56 @@
 "use client";
 
-import type { DashboardMeta, TeamStats } from "@/lib/types";
+import type { TeamStats, DashboardMeta } from "@/lib/types";
+import { formatNumber } from "@/lib/formatters";
 
-export interface HeroMetricCardProps {
+interface HeroMetricCardProps {
   meta: DashboardMeta;
   teamStats: TeamStats;
+  avgImpact?: number;
 }
 
-export function HeroMetricCard({ meta, teamStats }: HeroMetricCardProps) {
-  const generatedLabel = meta.generated_at
-    ? new Date(meta.generated_at).toLocaleDateString(undefined, {
-        dateStyle: "medium",
-        timeStyle: "short",
-      })
-    : "—";
+export function HeroMetricCard({ meta, teamStats, avgImpact }: HeroMetricCardProps) {
+  const prsPerWeek =
+    meta.total_prs_analyzed > 0 && teamStats.total_prs_merged > 0
+      ? (teamStats.total_prs_merged / 13).toFixed(1)
+      : "—";
+  const avg = avgImpact ?? teamStats.avg_impact_score ?? 0;
 
   return (
-    <div className="rounded-xl bg-slate-900 text-white p-6 shadow-lg">
-      <div className="flex flex-wrap items-end justify-between gap-4">
+    <div className="card-weave overflow-hidden">
+      <div className="px-5 py-4 border-b border-bg-border flex items-baseline justify-between gap-4">
         <div>
-          <p className="text-slate-400 text-sm font-medium uppercase tracking-wide">
-            Last updated
-          </p>
-          <p className="text-xl mt-1">{generatedLabel}</p>
-        </div>
-        <div className="text-right">
-          <p className="text-slate-400 text-sm font-medium uppercase tracking-wide">
-            Average impact
-          </p>
-          <p className="text-4xl font-bold text-indigo-300 mt-1">
-            {teamStats.avg_impact_score.toFixed(1)}
-          </p>
-          <p className="text-slate-500 text-sm mt-0.5">
-            across {teamStats.total_engineers} engineers
+          <h2 className="text-lg font-semibold text-[var(--text-primary)]">
+            Average output per engineer
+          </h2>
+          <p className="text-sm text-[var(--text-muted)] mt-0.5">
+            Impact score (0–100) and PR volume. Period: {meta.date_from} – {meta.date_to}.
           </p>
         </div>
+        <div className="text-right shrink-0">
+          <p className="text-3xl font-bold text-accent tabular-nums">
+            {avg > 0 ? avg.toFixed(1) : "—"}
+          </p>
+          <p className="text-xs text-[var(--text-muted)] mt-0.5">impact score</p>
+          <p className="text-sm font-semibold text-[var(--text-primary)] mt-1">
+            {prsPerWeek}/week
+          </p>
+          <p className="text-xs text-[var(--text-muted)]">PRs merged (team)</p>
+        </div>
+      </div>
+      <div className="px-5 py-3 bg-bg-tertiary/50 flex flex-wrap gap-4 text-sm">
+        <span className="text-[var(--text-secondary)]">
+          <strong className="text-[var(--text-primary)]">{formatNumber(teamStats.total_prs_merged)}</strong> PRs merged
+        </span>
+        <span className="text-[var(--text-secondary)]">
+          <strong className="text-[var(--text-primary)]">{formatNumber(teamStats.total_reviews)}</strong> reviews
+        </span>
+        <span className="text-[var(--text-secondary)]">
+          <strong className="text-[var(--text-primary)]">{meta.total_engineers}</strong> engineers
+        </span>
+        <span className="text-[var(--text-secondary)]">
+          <strong className="text-[var(--text-primary)]">{teamStats.first_pass_approval_rate ?? 0}%</strong> first-pass approval
+        </span>
       </div>
     </div>
   );

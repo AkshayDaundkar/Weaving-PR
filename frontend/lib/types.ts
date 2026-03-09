@@ -49,6 +49,8 @@ export interface TeamStats {
   period_days: number;
   avg_time_to_first_review_hours?: number;
   first_pass_approval_rate?: number;
+  /** Optional team-level work type counts (e.g. from backend); else aggregated from engineers. */
+  work_breakdown?: Record<string, number>;
 }
 
 export interface DashboardMeta {

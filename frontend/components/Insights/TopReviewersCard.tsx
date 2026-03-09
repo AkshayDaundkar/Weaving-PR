@@ -13,29 +13,30 @@ export function TopReviewersCard({
   limit = 5,
   onSelect,
 }: TopReviewersCardProps) {
+  const raw = (e: EngineerResponse) => (e.raw_stats as Record<string, number> | undefined)?.reviews_given ?? 0;
   const byReviews = [...engineers]
-    .filter((e) => (e.raw_stats?.reviews_given ?? 0) > 0)
-    .sort((a, b) => (b.raw_stats?.reviews_given ?? 0) - (a.raw_stats?.reviews_given ?? 0))
+    .filter((e) => raw(e) > 0)
+    .sort((a, b) => raw(b) - raw(a))
     .slice(0, limit);
 
   return (
-    <div className="rounded-xl bg-white border border-slate-200 p-4 shadow-sm">
-      <h3 className="text-sm font-semibold text-slate-800 mb-3">Top reviewers</h3>
+    <div className="card-weave p-4">
+      <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-3">Top reviewers</h3>
       <ul className="space-y-2">
         {byReviews.length === 0 ? (
-          <li className="text-slate-400 text-sm">No review data</li>
+          <li className="text-[var(--text-muted)] text-sm">No review data</li>
         ) : (
           byReviews.map((e) => (
             <li key={e.login} className="flex justify-between items-center text-sm">
               <button
                 type="button"
                 onClick={() => onSelect?.(e.login)}
-                className="font-medium text-slate-700 hover:text-indigo-600 text-left"
+                className="font-medium text-[var(--text-secondary)] hover:text-accent text-left"
               >
                 {e.login}
               </button>
-              <span className="text-slate-500 tabular-nums">
-                {e.raw_stats?.reviews_given ?? 0} reviews
+              <span className="text-[var(--text-muted)] tabular-nums">
+                {raw(e)} reviews
               </span>
             </li>
           ))
