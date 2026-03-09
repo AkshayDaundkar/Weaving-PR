@@ -26,7 +26,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:3000",
         "http://127.0.0.1:3000",
-        "https://weaving-pr-91kf-cb0hmceg8-akshaydaundkars-projects.vercel.app",
+        "https://weaving-pr-91kf.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
