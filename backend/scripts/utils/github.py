@@ -29,12 +29,20 @@ query GetMergedPRs($owner: String!, $name: String!, $cursor: String) {
         number
         title
         body
+        createdAt
         mergedAt
         additions
         deletions
         author { login }
         files(first: 100) {
           nodes { path additions deletions }
+        }
+        reviews(first: 100) {
+          nodes {
+            author { login }
+            state
+            submittedAt
+          }
         }
       }
     }
@@ -110,11 +118,12 @@ def fetch_all_merged_prs(
                     if on_progress:
                         on_progress(len(all_nodes))
                     return all_nodes
-                # Normalize to requested shape: number, title, body, mergedAt, author login, files (path), additions, deletions
+                # Normalize to requested shape: number, title, body, createdAt, mergedAt, author, files, reviews
                 pr = {
                     "number": n.get("number"),
                     "title": n.get("title") or "",
                     "body": n.get("body") or "",
+                    "createdAt": n.get("createdAt"),
                     "mergedAt": n.get("mergedAt"),
                     "additions": n.get("additions") or 0,
                     "deletions": n.get("deletions") or 0,
@@ -125,6 +134,10 @@ def fetch_all_merged_prs(
                     pr["author"] = {"login": ""}
                 files = n.get("files", {}).get("nodes") or []
                 pr["files"] = [{"path": f.get("path", ""), "additions": f.get("additions", 0), "deletions": f.get("deletions", 0)} for f in files]
+                # Reviews: score script expects list or { nodes: [...] }
+                reviews_data = n.get("reviews") or {}
+                review_nodes = reviews_data.get("nodes") if isinstance(reviews_data, dict) else (reviews_data if isinstance(reviews_data, list) else [])
+                pr["reviews"] = [{"author": r.get("author") or {}, "state": r.get("state") or "COMMENTED", "submittedAt": r.get("submittedAt") or ""} for r in review_nodes] if isinstance(review_nodes, list) else []
                 all_nodes.append(pr)
 
             if on_progress:

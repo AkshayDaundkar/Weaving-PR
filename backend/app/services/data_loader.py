@@ -154,6 +154,9 @@ def load_dashboard_payload() -> DashboardData | None:
     else:
         return None
 
+    # Score script writes meta under data["meta"]; fallback to top-level for older payloads
+    meta_src = meta_dict.get("meta") if isinstance(meta_dict.get("meta"), dict) else meta_dict
+
     engineers: list[EngineerResponse] = []
     for i, row in enumerate(raw_list):
         eng = _engineer_from_row(row, i + 1)
@@ -162,21 +165,25 @@ def load_dashboard_payload() -> DashboardData | None:
 
     n = len(engineers)
     meta = DashboardMeta(
-        generated_at=meta_dict.get("generated_at", ""),
-        date_from=meta_dict.get("date_from", ""),
-        date_to=meta_dict.get("date_to", ""),
-        repo=meta_dict.get("repo", f"{settings.github_org}/{settings.github_repo}"),
-        total_prs_analyzed=int(meta_dict.get("total_prs_analyzed", 0)),
-        total_engineers=int(meta_dict.get("total_engineers", n)),
-        methodology_version=str(meta_dict.get("methodology_version", "")),
+        generated_at=meta_src.get("generated_at", ""),
+        date_from=meta_src.get("date_from", ""),
+        date_to=meta_src.get("date_to", ""),
+        repo=meta_src.get("repo", f"{settings.github_org}/{settings.github_repo}"),
+        total_prs_analyzed=int(meta_src.get("total_prs_analyzed", 0)),
+        total_engineers=int(meta_src.get("total_engineers", n)),
+        methodology_version=str(meta_src.get("methodology_version", "")),
     )
+    _avg_ttr = team_stats_dict.get("avg_time_to_first_review_hours")
+    _fpa = team_stats_dict.get("first_pass_approval_rate")
     team_stats = TeamStats(
-        total_prs_analyzed=int(team_stats_dict.get("total_prs_analyzed", meta_dict.get("total_prs_analyzed", 0))),
+        total_prs_analyzed=int(team_stats_dict.get("total_prs_analyzed", meta_src.get("total_prs_analyzed", 0))),
         total_prs_merged=int(team_stats_dict.get("total_prs_merged", 0)),
         total_reviews=int(team_stats_dict.get("total_reviews", 0)),
         total_engineers=int(team_stats_dict.get("total_engineers", n)),
         avg_impact_score=float(team_stats_dict.get("avg_impact_score", 0)),
-        period_days=int(team_stats_dict.get("period_days", meta_dict.get("lookback_days", settings.days_lookback))),
+        period_days=int(team_stats_dict.get("period_days", meta_src.get("lookback_days", settings.days_lookback))),
+        avg_time_to_first_review_hours=float(_avg_ttr) if _avg_ttr is not None else None,
+        first_pass_approval_rate=float(_fpa) if _fpa is not None else None,
     )
     top5 = engineers[:5]
     return DashboardData(

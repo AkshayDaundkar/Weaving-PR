@@ -17,6 +17,8 @@ class TeamStats(BaseModel):
     total_engineers: int = 0
     avg_impact_score: float = 0.0
     period_days: int = 0
+    avg_time_to_first_review_hours: float | None = None
+    first_pass_approval_rate: float | None = None
 
 
 class DashboardMeta(BaseModel):

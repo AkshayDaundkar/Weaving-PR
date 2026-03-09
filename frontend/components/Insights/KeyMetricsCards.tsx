@@ -58,12 +58,22 @@ export function KeyMetricsCards({ meta, teamStats }: KeyMetricsCardsProps) {
       <div className="p-4 grid grid-cols-2 lg:grid-cols-4 gap-4">
         {METRICS.map(({ key, label, explain, format }) => {
           const raw = teamStats[key];
-          const value = typeof raw === "number" ? raw : Number(raw) ?? 0;
+          const value = typeof raw === "number" ? raw : Number(raw);
+          const display =
+            key === "first_pass_approval_rate"
+              ? raw === undefined || raw === null
+                ? "—"
+                : `${Number(raw)}%`
+              : key === "avg_time_to_first_review_hours"
+                ? value != null && value > 0
+                  ? format(value)
+                  : "—"
+                : format(Number.isFinite(value) ? value : 0);
           return (
             <div key={key} className="rounded-lg border border-bg-border bg-bg-secondary p-3">
               <p className="text-xs text-[var(--text-muted)] mb-0.5">{label}</p>
               <p className="text-xl font-bold font-mono text-accent tabular-nums">
-                {key === "first_pass_approval_rate" ? (value ? `${value}%` : "—") : format(value)}
+                {display}
               </p>
               <p className="text-xs text-[var(--text-secondary)] mt-1">{explain}</p>
             </div>

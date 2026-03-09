@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-03-09T20:54:26.868461+00:00",
+    "generated_at": "2026-03-09T21:14:36.842149+00:00",
     "date_from": "2025-12-09",
     "date_to": "2026-03-09",
     "repo": "PostHog/posthog",
@@ -1535,8 +1535,8 @@
         0.0,
         24.42301960827262,
         52.648660484788934,
-        60.91444086950902,
-        58.45084733128341,
+        63.37307877381963,
+        55.992209426972806,
         40.8797649955707
       ],
       "raw_stats": {
@@ -1884,8 +1884,8 @@
         0.0,
         22.38089402361775,
         45.985049628930796,
-        23.53663518962427,
-        34.603002535933825,
+        26.601066578478967,
+        31.538571147079125,
         23.183845862698103
       ],
       "raw_stats": {
@@ -2349,8 +2349,8 @@
         0.0,
         7.31190782705656,
         7.907627109641747,
-        7.516081796878815,
-        28.8396487170344,
+        10.148345874648715,
+        26.2073846392645,
         31.90270425772304
       ],
       "raw_stats": {
@@ -2698,8 +2698,8 @@
         0.0,
         0.0,
         21.04632345264953,
-        20.867782981439113,
-        20.067966798943196,
+        22.279171341074765,
+        18.65657843930754,
         2.5971517154058783,
         60.61463145842806
       ],
@@ -2717,11 +2717,124 @@
       }
     },
     {
+      "login": "anirudhpillai",
+      "name": "",
+      "avatar_url": "https://github.com/anirudhpillai.png",
+      "github_url": "https://github.com/anirudhpillai",
+      "rank": 19,
+      "impact_score": 63.3,
+      "momentum": 716.8,
+      "narrative": "Shipped 27 PRs in analytics and 4 other areas (e.g. \"feat(insights): Home tab for product analytics\") and gave 0 reviews.",
+      "dimensions": {
+        "pr_output": 65.9,
+        "review_impact": 50.0,
+        "velocity": 50.0,
+        "quality": 96.6
+      },
+      "work_breakdown": {
+        "bugfix": 25.9,
+        "feature": 59.3,
+        "infra": 14.8
+      },
+      "area_breakdown": {
+        "analytics": 59.3,
+        "frontend_core": 25.9,
+        "other": 14.8
+      },
+      "primary_area": "analytics",
+      "areas_covered": [
+        "analytics",
+        "feature_flags",
+        "frontend_core",
+        "other",
+        "session_replay"
+      ],
+      "top_prs": [
+        {
+          "number": 46393,
+          "title": "feat(insights): Home tab for product analytics",
+          "url": "https://github.com/PostHog/posthog/pull/46393",
+          "complexity": "moderate",
+          "work_type": "bugfix",
+          "additions": 638,
+          "deletions": 8,
+          "merged_at": "2026-02-26T15:33:27Z"
+        },
+        {
+          "number": 47770,
+          "title": "fix(retention): aggregation multi line select",
+          "url": "https://github.com/PostHog/posthog/pull/47770",
+          "complexity": "moderate",
+          "work_type": "bugfix",
+          "additions": 514,
+          "deletions": 229,
+          "merged_at": "2026-02-23T14:31:47Z"
+        },
+        {
+          "number": 49285,
+          "title": "feat(dashboards): AI to analyse changes on dashboard",
+          "url": "https://github.com/PostHog/posthog/pull/49285",
+          "complexity": "moderate",
+          "work_type": "feature",
+          "additions": 520,
+          "deletions": 90,
+          "merged_at": "2026-02-28T18:55:55Z"
+        },
+        {
+          "number": 49576,
+          "title": "feat(insights-home): improve trending/alerts/active users section",
+          "url": "https://github.com/PostHog/posthog/pull/49576",
+          "complexity": "moderate",
+          "work_type": "feature",
+          "additions": 183,
+          "deletions": 74,
+          "merged_at": "2026-03-04T10:27:51Z"
+        },
+        {
+          "number": 49453,
+          "title": "feat(dashboards-ai): dashboard ai refresh, cache exactly what's on UI",
+          "url": "https://github.com/PostHog/posthog/pull/49453",
+          "complexity": "moderate",
+          "work_type": "feature",
+          "additions": 172,
+          "deletions": 64,
+          "merged_at": "2026-03-03T13:30:59Z"
+        }
+      ],
+      "weekly_impact": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        15.668444335386885,
+        11.858205226823324,
+        10.602087029120343,
+        26.80552365233917,
+        14.727388416927415
+      ],
+      "raw_stats": {
+        "prs_merged": 27,
+        "total_additions": 4111,
+        "total_deletions": 1137,
+        "reviews_given": 0,
+        "review_comments_written": 0,
+        "prs_first_reviewed": 0,
+        "distinct_authors_reviewed": 0,
+        "median_review_time_hours": 0.0,
+        "issue_linked_prs": 2,
+        "first_pass_approved_prs": 27
+      }
+    },
+    {
       "login": "skoob13",
       "name": "",
       "avatar_url": "https://github.com/skoob13.png",
       "github_url": "https://github.com/skoob13",
-      "rank": 19,
+      "rank": 20,
       "impact_score": 63.3,
       "momentum": 915.7,
       "narrative": "Shipped 46 PRs in frontend core and 8 other areas (e.g. \"chore(mcp): upgrade to Zod 4 with built-in JSON schema gener\") and gave 0 reviews.",
@@ -2832,119 +2945,6 @@
         "median_review_time_hours": 0.0,
         "issue_linked_prs": 0,
         "first_pass_approved_prs": 46
-      }
-    },
-    {
-      "login": "anirudhpillai",
-      "name": "",
-      "avatar_url": "https://github.com/anirudhpillai.png",
-      "github_url": "https://github.com/anirudhpillai",
-      "rank": 20,
-      "impact_score": 63.3,
-      "momentum": 716.8,
-      "narrative": "Shipped 27 PRs in analytics and 4 other areas (e.g. \"feat(insights): Home tab for product analytics\") and gave 0 reviews.",
-      "dimensions": {
-        "pr_output": 65.9,
-        "review_impact": 50.0,
-        "velocity": 50.0,
-        "quality": 96.6
-      },
-      "work_breakdown": {
-        "bugfix": 25.9,
-        "feature": 59.3,
-        "infra": 14.8
-      },
-      "area_breakdown": {
-        "analytics": 59.3,
-        "frontend_core": 25.9,
-        "other": 14.8
-      },
-      "primary_area": "analytics",
-      "areas_covered": [
-        "analytics",
-        "feature_flags",
-        "frontend_core",
-        "other",
-        "session_replay"
-      ],
-      "top_prs": [
-        {
-          "number": 46393,
-          "title": "feat(insights): Home tab for product analytics",
-          "url": "https://github.com/PostHog/posthog/pull/46393",
-          "complexity": "moderate",
-          "work_type": "bugfix",
-          "additions": 638,
-          "deletions": 8,
-          "merged_at": "2026-02-26T15:33:27Z"
-        },
-        {
-          "number": 47770,
-          "title": "fix(retention): aggregation multi line select",
-          "url": "https://github.com/PostHog/posthog/pull/47770",
-          "complexity": "moderate",
-          "work_type": "bugfix",
-          "additions": 514,
-          "deletions": 229,
-          "merged_at": "2026-02-23T14:31:47Z"
-        },
-        {
-          "number": 49285,
-          "title": "feat(dashboards): AI to analyse changes on dashboard",
-          "url": "https://github.com/PostHog/posthog/pull/49285",
-          "complexity": "moderate",
-          "work_type": "feature",
-          "additions": 520,
-          "deletions": 90,
-          "merged_at": "2026-02-28T18:55:55Z"
-        },
-        {
-          "number": 49576,
-          "title": "feat(insights-home): improve trending/alerts/active users section",
-          "url": "https://github.com/PostHog/posthog/pull/49576",
-          "complexity": "moderate",
-          "work_type": "feature",
-          "additions": 183,
-          "deletions": 74,
-          "merged_at": "2026-03-04T10:27:51Z"
-        },
-        {
-          "number": 49453,
-          "title": "feat(dashboards-ai): dashboard ai refresh, cache exactly what's on UI",
-          "url": "https://github.com/PostHog/posthog/pull/49453",
-          "complexity": "moderate",
-          "work_type": "feature",
-          "additions": 172,
-          "deletions": 64,
-          "merged_at": "2026-03-03T13:30:59Z"
-        }
-      ],
-      "weekly_impact": [
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        0.0,
-        15.668444335386885,
-        11.858205226823324,
-        10.602087029120343,
-        26.80552365233917,
-        14.727388416927415
-      ],
-      "raw_stats": {
-        "prs_merged": 27,
-        "total_additions": 4111,
-        "total_deletions": 1137,
-        "reviews_given": 0,
-        "review_comments_written": 0,
-        "prs_first_reviewed": 0,
-        "distinct_authors_reviewed": 0,
-        "median_review_time_hours": 0.0,
-        "issue_linked_prs": 2,
-        "first_pass_approved_prs": 27
       }
     },
     {
@@ -3746,8 +3746,8 @@
         8.959151433661452,
         11.863920177831343,
         31.558364617099066,
-        9.36994929554379,
-        15.38236120559914
+        9.77686021736535,
+        14.975450283777581
       ],
       "raw_stats": {
         "prs_merged": 62,
@@ -4204,8 +4204,8 @@
         0.0,
         0.0,
         0.0,
-        23.054036959677426,
-        10.211013176497273,
+        23.74718414023737,
+        9.517865995937328,
         34.68610295196065,
         15.383073993644555,
         7.565490102187396
@@ -4549,8 +4549,8 @@
         0.0,
         31.202215073969324,
         14.121088805211645,
-        15.522987740323153,
-        13.983351366920559,
+        17.75106404966092,
+        11.755275057582793,
         11.589549527051688
       ],
       "raw_stats": {
@@ -5232,8 +5232,8 @@
         0.0,
         15.2551132810558,
         0.0,
-        24.458522341528546,
-        16.36241201459916,
+        25.91413142070443,
+        14.906802935423272,
         22.527726892882782
       ],
       "raw_stats": {
@@ -7876,8 +7876,8 @@
         2.8729871717886155,
         12.938603093253656,
         3.3350078155585825,
-        6.991176488397128,
-        22.235226903169707
+        8.541776057863705,
+        20.68462733370313
       ],
       "raw_stats": {
         "prs_merged": 18,
@@ -11505,8 +11505,8 @@
         0.3040779497573793,
         5.564804488687748,
         0.0,
-        0.0,
-        3.8101149317551286
+        1.6094653187861787,
+        2.2006496129689497
       ],
       "raw_stats": {
         "prs_merged": 4,
@@ -12466,17 +12466,6 @@
         "label": "ReeceJones"
       },
       {
-        "id": "skoob13",
-        "login": "skoob13",
-        "name": "",
-        "avatar_url": "https://github.com/skoob13.png",
-        "avatar": "https://github.com/skoob13.png",
-        "value": 63.3,
-        "size": 63.3,
-        "group": "frontend_core",
-        "label": "skoob13"
-      },
-      {
         "id": "anirudhpillai",
         "login": "anirudhpillai",
         "name": "",
@@ -12486,6 +12475,17 @@
         "size": 63.3,
         "group": "analytics",
         "label": "anirudhpillai"
+      },
+      {
+        "id": "skoob13",
+        "login": "skoob13",
+        "name": "",
+        "avatar_url": "https://github.com/skoob13.png",
+        "avatar": "https://github.com/skoob13.png",
+        "value": 63.3,
+        "size": 63.3,
+        "group": "frontend_core",
+        "label": "skoob13"
       },
       {
         "id": "mendral-app",
@@ -13481,8 +13481,8 @@
     "veryayskiy",
     "yasen-posthog",
     "ReeceJones",
-    "skoob13",
     "anirudhpillai",
+    "skoob13",
     "mendral-app",
     "meikelmosby",
     "ablaszkiewicz",

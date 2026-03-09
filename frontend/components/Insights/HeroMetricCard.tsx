@@ -11,10 +11,16 @@ interface HeroMetricCardProps {
 
 export function HeroMetricCard({ meta, teamStats, avgImpact }: HeroMetricCardProps) {
   const prsPerWeek =
-    meta.total_prs_analyzed > 0 && teamStats.total_prs_merged > 0
-      ? (teamStats.total_prs_merged / 13).toFixed(1)
+    meta.total_prs_analyzed > 0 && teamStats.total_prs_merged > 0 && teamStats.period_days > 0
+      ? (teamStats.total_prs_merged / (teamStats.period_days / 7)).toFixed(1)
       : "—";
   const avg = avgImpact ?? teamStats.avg_impact_score ?? 0;
+  const periodLabel =
+    meta.date_from && meta.date_to
+      ? `${meta.date_from} – ${meta.date_to}`
+      : teamStats.period_days
+        ? `${teamStats.period_days} days`
+        : "—";
 
   return (
     <div className="card-weave overflow-hidden">
@@ -24,7 +30,7 @@ export function HeroMetricCard({ meta, teamStats, avgImpact }: HeroMetricCardPro
             Average output per engineer
           </h2>
           <p className="text-sm text-[var(--text-muted)] mt-0.5">
-            Impact score (0–100) and PR volume. Period: {meta.date_from} – {meta.date_to}.
+            Impact score (0–100) and PR volume. Period: {periodLabel}.
           </p>
         </div>
         <div className="text-right shrink-0">
