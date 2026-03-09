@@ -5,7 +5,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api.routes import chat, dashboard, engineers, network
+from app.api.routes import chat, dashboard, engineers, network, pipeline
 
 
 @asynccontextmanager
@@ -33,6 +33,7 @@ app.include_router(dashboard.router)
 app.include_router(engineers.router)
 app.include_router(network.router)
 app.include_router(chat.router)
+app.include_router(pipeline.router)
 
 
 @app.get("/")
@@ -50,6 +51,8 @@ def root() -> dict:
             "GET /api/engineers/{login}",
             "GET /api/network",
             "POST /api/chat",
+            "GET /api/pipeline/status",
+            "POST /api/pipeline/run",
         ],
     }
 
