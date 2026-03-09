@@ -121,4 +121,6 @@ export interface PipelineStatus {
   classified_count: number;
   running_step: string | null;
   days_lookback: number;
+  /** Set when the last run of a step failed (e.g. script error). */
+  last_run_error?: string | null;
 }
