@@ -42,7 +42,15 @@ export function DashboardClient({ data }: DashboardClientProps) {
               {data.meta.date_from && ` · ${data.meta.date_from} → ${data.meta.date_to}`}
             </p>
           </div>
-          <ThemeToggle />
+          <div className="flex items-center gap-2">
+            <a
+              href="/pipeline"
+              className="text-sm text-muted hover:text-primary underline"
+            >
+              Pipeline
+            </a>
+            <ThemeToggle />
+          </div>
         </header>
 
         <section>

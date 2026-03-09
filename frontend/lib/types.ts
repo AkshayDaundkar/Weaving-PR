@@ -110,3 +110,13 @@ export interface ChatRequest {
 export interface ChatResponse {
   answer: string;
 }
+
+export interface PipelineStatus {
+  collect_done: boolean;
+  classify_done: boolean;
+  score_done: boolean;
+  pr_count: number;
+  classified_count: number;
+  running_step: string | null;
+  days_lookback: number;
+}

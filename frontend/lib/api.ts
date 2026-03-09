@@ -5,6 +5,7 @@ import type {
   DashboardData,
   EngineerResponse,
   NetworkData,
+  PipelineStatus,
 } from "./types";
 
 /** Server-side: use NEXT_PUBLIC_API_URL or localhost:8000. Client-side: same-origin so Next rewrites /api/* to backend. */
@@ -62,5 +63,27 @@ export async function postChat(
     cache: "no-store",
   });
   if (!res.ok) throw new Error(`Failed to chat: ${res.status}`);
+  return res.json();
+}
+
+export async function getPipelineStatus(): Promise<PipelineStatus> {
+  const res = await fetch(`${API_BASE}/api/pipeline/status`, {
+    cache: "no-store",
+  });
+  if (!res.ok) throw new Error(`Failed to fetch pipeline status: ${res.status}`);
+  return res.json();
+}
+
+export async function runPipelineStep(
+  step: "collect" | "classify" | "score"
+): Promise<{ status: string; step: string }> {
+  const res = await fetch(`${API_BASE}/api/pipeline/run?step=${step}`, {
+    method: "POST",
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.detail ?? `Failed to run pipeline step: ${res.status}`);
+  }
   return res.json();
 }

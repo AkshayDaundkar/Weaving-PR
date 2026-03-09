@@ -5,5 +5,3 @@ __pycache__/
 venv/
 *.egg-info/
 dist/
-data/raw/
-data/processed/
